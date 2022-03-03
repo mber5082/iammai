@@ -23,7 +23,8 @@ export default class Register extends Component{
         let data = {
             idkey:this.state.idkey,
             firstname:this.state.firstname,
-            lastname:this.state.lastname
+            lastname:this.state.lastname,
+            email:JSON.parse(localStorage.getItem('user')).email
         }
         axios.post(url,data)
         this.setState({
@@ -41,6 +42,7 @@ export default class Register extends Component{
                     <hr/>
                 </div>
                 <form className="container">
+
                     <div className="form-group">
                         <label className="text-white" >First Name</label>
                         <input type="text" className="form-control" id="firstname" onChange={this.handleChang} value={this.state.firstname}/>
@@ -50,10 +52,12 @@ export default class Register extends Component{
                         <input type="text" className="form-control" id="lastname" onChange={this.handleChang} value={this.state.lastname}/>
                     </div>
                     <div className="form-group">
-                        <label className="text-white"  htmlFor="id">Id</label>
+                        <label className="text-white"  htmlFor="id">ID</label>
                         <input type="text" className="form-control" size="10" id="idkey" onChange={this.handleChang} value={this.state.idkey}/>
                     </div>
+                    <a href="/Showdata">
                     <button type="button" className="btn btn-primary" onClick={this.handleClicked}>Submit</button>
+                    </a>
                 </form>
             </div>
         );
